@@ -3,22 +3,30 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/stopwatch.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <table class="authors-list">
+    <table class="tasks-list">
     <tr>
         <td>Task Name</td><td>Time</td>
     </tr>
     <tr>
         <td>
-            <input type="text" name="first_name" />
+            <input type="text" name="first_name"  />
         </td>
-        <td>
+        <td class="watch">
+          <script>
+            var allTD = document.getElementsByClassName("watch");
+            var lastTD = allTD[allTD.length-1];
+            new Stopwatch(lastTD);
+          </script>
         </td>
     </tr>
 	</table>
 	<a href="#" title="" class="add-task">Add Task</a>
+  </script>
   </body>
 </html>
