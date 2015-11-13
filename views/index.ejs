@@ -4,12 +4,12 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/javascripts/stopwatch.js"></script>
-    <script src="jquery-1.11.3.min.js"></script>
+    <script src="/javascripts/addtask.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <table class="tasks-list">
+    <table id="tasks-list">
     <tr>
         <td>Task Name</td><td>Time</td>
     </tr>
@@ -26,7 +26,7 @@
         </td>
     </tr>
 	</table>
-	<a href="#" title="" class="add-task">Add Task</a>
+	<a href="#" title="" id="add-task">Add Task</a>
   </script>
   </body>
 </html>
