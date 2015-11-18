@@ -63,7 +63,8 @@ var Stopwatch = function(elem, options) {
   }
 
   function render() {
-    timer.innerHTML = clock/1000;
+    var time = formatTime();
+    timer.innerHTML = time; 
   }
 
   function delta() {
@@ -74,6 +75,24 @@ var Stopwatch = function(elem, options) {
     return d;
   }
 
+  function formatTime(){
+    //convet current time to from ms to s
+    var secondsToConvert = clock/1000;
+    var secondsPerMin = 60
+    //get seconds and minutes out of current seconds
+    var seconds = Math.floor(secondsToConvert%secondsPerMin);
+    var minutes = Math.floor(secondsToConvert/secondsPerMin);
+    var formattedTimeString = '';
+    if (minutes < 10){
+        formattedTimeString = formattedTimeString + '0';
+    }
+    formattedTimeString = formattedTimeString + minutes.toString() + ':';
+    if (seconds < 10){
+        formattedTimeString = formattedTimeString + '0';
+    }
+    formattedTimeString = formattedTimeString + seconds.toString();
+    return formattedTimeString;
+  }
   // public API
   this.start  = start;
   this.stop   = stop;

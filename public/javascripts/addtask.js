@@ -22,7 +22,7 @@ window.onload = function(){
         //The script will contain javascript to be run
         newWatch.type = 'text/javascript';
         //This code appends a stopwatch to the most recent 'watch' class column
-        var watchCode='var allTD = document.getElementsByClassName("watch"); +
+        var watchCode='var allTD = document.getElementsByClassName("watch");' +
                       'var lastTD = allTD[allTD.length-1]; new Stopwatch(lastTD);';
         //Append the javascript text to the script tag
         newWatch.appendChild(document.createTextNode(watchCode));
