@@ -25,6 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+/*Accept post request from archive*/
+app.post('/archive',function(req,res){
+    console.log(req.body);
+    res.type('text/plain');
+    res.write('Hello!')
+    res.end();
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
