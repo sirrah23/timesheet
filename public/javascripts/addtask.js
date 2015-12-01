@@ -1,4 +1,4 @@
-window.onload = function(){
+window.addEventListener("load",function(){
     /*
      *  This script adds functionality to the Add Task link on the page
      *  so that when it is clicked a row is added the task table 
@@ -35,4 +35,4 @@ window.onload = function(){
         //Add the new row to the table
         taskTable.appendChild(newTaskElement);
     });
-};
+});

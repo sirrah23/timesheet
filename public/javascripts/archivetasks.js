@@ -68,7 +68,7 @@ function postTableToServer(){
     form.method = 'post';
     form.action = '/archive';
     var tableJson = tableToJson();
-    
+        
     var xhr = new XMLHttpRequest();
     xhr.open(form.method,form.action,true);
     xhr.setRequestHeader('Content-Type','application/json; charset=UTF-8');
@@ -76,3 +76,8 @@ function postTableToServer(){
     xhr.send(JSON.stringify(tableJson));
 }
 
+/*Make it so that when the link is clicked the archiving occurs*/
+window.addEventListener("load", function(){
+    var archiveTasksLink = document.getElementById('archive-tasks');
+    archiveTasksLink.addEventListener("click",postTableToServer);
+})
