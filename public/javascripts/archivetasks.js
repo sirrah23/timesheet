@@ -65,14 +65,29 @@ function tableToJson(){
 */
 function postTableToServer(){
     var form = {};
+    /*Post via ajax*/
     form.method = 'post';
-    form.action = '/archive';
+    form.action = '/ajaxarchive';
+    /*Convert our table to JSON to send to server*/
     var tableJson = tableToJson();
-        
+   
+    /*Create the request to send to server*/    
     var xhr = new XMLHttpRequest();
     xhr.open(form.method,form.action,true);
     xhr.setRequestHeader('Content-Type','application/json; charset=UTF-8');
 
+    /*Alert user how the server responds*/
+    xhr.onreadystatechange = function(event){
+        var serverResponse = event.target
+        
+        /*If the request went through and the server is done responding then... */
+        if (serverResponse.readyState === 4 && serverResponse.status === 200 ){
+            /*Alert the user as to what the response was*/
+            alert(serverResponse.responseText);
+        }
+    }
+
+    /*Send the JSON to the server*/
     xhr.send(JSON.stringify(tableJson));
 }
 

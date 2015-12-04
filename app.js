@@ -26,10 +26,10 @@ app.use('/', routes);
 app.use('/users', users);
 
 /*Accept post request from archive*/
-app.post('/archive',function(req,res){
+app.post('/ajaxarchive',function(req,res){
     console.log(req.body);
     res.type('text/plain');
-    res.write('Hello!')
+    res.write('The table has been posted to the database!')
     res.end();
 });
 
