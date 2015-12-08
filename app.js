@@ -8,7 +8,9 @@ var credentials = require('./credentials.js');
 var Table = require('./models/tablemodel.js');
 var mongoose = require('mongoose');
 
+/*Database connection*/
 mongoose.connect(`mongodb:/\/${credentials.username}:${credentials.password}@ds037824.mongolab.com:37824/timesheet`);
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -29,12 +31,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-/*Accept post request from archive*/
+/*
+ * Accept post request from archive
+ * and post the table to the database
+*/
 app.post('/ajaxarchive',function(req,res){
-    console.log(req.body);
-    res.type('text/plain');
-    res.write('The table has been posted to the database!')
-    res.end();
+    //use the table schema to create a new model
+    var table = new Table({ table:req.body });
+    var userAlertText = '';
+    //set user alert depending on whether or not the database storage
+    //was a success or a failure
+    table.save(function(error,table){
+        if (error){
+            userAlertText = 'Could not store in database'; 
+        }else{
+            userAlertText = 'The table has been posted to the database!';
+        }
+        res.type('text/plain');
+        res.write(userAlertText);
+        res.end();
+    });    
 });
 
 // catch 404 and forward to error handler
