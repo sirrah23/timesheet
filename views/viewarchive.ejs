@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title  %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <!--TODO Maybe add table into loop if formatting is better -->
+        <table>
+        <% for(var i=0;i<data.length;i++){ %>
+        <tr> <%= data[i].date %> </tr>
+            <tr> 
+                <td><%= data[i].table.task  %></td>
+                <td><%= data[i].table.time  %></td>         
+            </tr>
+        <% } %>
+        </table>
+    </body>
+</html>
+
