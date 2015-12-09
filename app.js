@@ -33,10 +33,13 @@ app.use('/users', users);
 
 app.get('/viewarchive',function(req,res){
   var timesheets = [];
+  //Get all timesheets from the database
   Table.find({}, function(err, allTimesheets){
+    //Take each timesheet from the database and push it into the array
     allTimesheets.forEach(function(timesheet){
       timesheets.push(timesheet);
     });
+    //Display the timesheets we just got from the database
     res.render('viewarchive',{title: 'Archive', data: timesheets});
   });
 });
