@@ -7,7 +7,7 @@
     <body>
         <% for(var i=0;i<data.length;i++){ %>
         <table>
-        <tr> <%= data[i].created %> </tr>
+        <tr><td colspan="2"  > <%= data[i].created %> </td></tr>
             <% for(var j=0;j<data[i].table.length;j++){ %>
                 <tr> 
                     <td><%= data[i].table[j].task  %></td>
