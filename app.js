@@ -31,12 +31,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.get('/viewarchive',function(req,res){
+  var timesheets = [];
+  Table.find({}, function(err, allTimesheets){
+    allTimesheets.forEach(function(timesheet){
+      timesheets.push(timesheet);
+    });
+    res.render('viewarchive',{title: 'Archive', data: timesheets});
+  });
+});
+
 /*
  * Accept post request from archive
  * and post the table to the database
 */
 app.post('/ajaxarchive',function(req,res){
   //use the table schema to create a new model
+  console.log(req.body);
   var table = new Table({ table:req.body });
   var userAlertText = '';
   //set user alert depending on whether or not the database storage

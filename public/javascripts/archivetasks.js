@@ -28,11 +28,11 @@ function stopAllWatches(){
  *  DOM tree
  */   
 function getNameOfTask(columns){
-  return columns[0].getElementsByTagName('input')[0].value
+  return columns[0].getElementsByTagName('input')[0].value;
 }
 
 function getTimeOfTask(columns){
-  return timeOfTask = columns[1].getElementsByTagName('span')[0].innerText
+  return timeOfTask = columns[1].getElementsByTagName('span')[0].innerHTML;
 }
 
 /*

@@ -5,16 +5,18 @@
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
     <body>
-        <!--TODO Maybe add table into loop if formatting is better -->
-        <table>
         <% for(var i=0;i<data.length;i++){ %>
-        <tr> <%= data[i].date %> </tr>
-            <tr> 
-                <td><%= data[i].table.task  %></td>
-                <td><%= data[i].table.time  %></td>         
-            </tr>
-        <% } %>
+        <table>
+        <tr> <%= data[i].created %> </tr>
+            <% for(var j=0;j<data[i].table.length;j++){ %>
+                <tr> 
+                    <td><%= data[i].table[j].task  %></td>
+                    <td><%= data[i].table[j].time  %></td>         
+                </tr>
+            <% } %>
         </table>
+        </br>
+        <% } %>
     </body>
 </html>
 
