@@ -11,25 +11,14 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <table id="tasks-list">
-    <tr>
-        <td>Task Name</td><td>Time</td>
-    </tr>
-    <tr>
-        <td>
-            <input type="text" name="first_name"  />
-        </td>
-        <td class="watch">
-          <script>
-            var allTD = document.getElementsByClassName("watch");
-            var lastTD = allTD[allTD.length-1];
-            new Stopwatch(lastTD);
-          </script>
-        </td>
-    </tr>
+        <tr>
+            <td>Task Name</td><td>Time</td>
+        </tr>
 	</table>
-    <a href="#" title="" id="add-task">Add Task</a></br>
-    <a href="#" title="" id="archive-tasks">Archive Tasks</a></br>
-    <a href="/viewarchive" title="" id="view-archive">View Timesheet Archive</a></br>
+    <button id="add-task" class="float-left submit-button" >Add Task</button>
+    <button id="archive-tasks" class="float-left submit-button"> Archive Tasks</button>
+    <button onclick="location.href = '/viewarchive';" id="view-archive" 
+            class="float-left submit-button" >View Timesheet Archive</button>
   </script>
   </body>
 </html>
