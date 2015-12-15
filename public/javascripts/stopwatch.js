@@ -75,22 +75,30 @@ var Stopwatch = function(elem, options) {
     return d;
   }
 
+  /*Refactor at some point*/
   function formatTime(){
-  //convet current time to from ms to s
-  var secondsToConvert = clock/1000;
-  var secondsPerMin = 60
-  //get seconds and minutes out of current seconds
-  var seconds = Math.floor(secondsToConvert%secondsPerMin);
-  var minutes = Math.floor(secondsToConvert/secondsPerMin);
-  var formattedTimeString = '';
-  if (minutes < 10){
-    formattedTimeString = formattedTimeString + '0';
-  }
-  formattedTimeString = formattedTimeString + minutes.toString() + ':';
-  if (seconds < 10){
-    formattedTimeString = formattedTimeString + '0';
-  }
-  formattedTimeString = formattedTimeString + seconds.toString();
+    //convert current time to from ms to s
+    var secondsToConvert = clock/1000;
+    var secondsPerMin = 60
+    var minutesPerHour = 60
+    //get hours, minutes, and seconds out of current seconds
+    var seconds = Math.floor(secondsToConvert%secondsPerMin);
+    var minutes = Math.floor(secondsToConvert/secondsPerMin);
+    var hours = Math.floor(minutes/minutesPerHour);
+    minutes = Math.floor(minutes%minutesPerHour);
+    var formattedTimeString = '';
+    if (hours < 10){
+      formattedTimeString = formattedTimeString + '0';
+    }
+    formattedTimeString = formattedTimeString + hours.toString() + ':';
+    if (minutes < 10){
+      formattedTimeString = formattedTimeString + '0';
+    }
+    formattedTimeString = formattedTimeString + minutes.toString() + ':';
+    if (seconds < 10){
+      formattedTimeString = formattedTimeString + '0';
+    }
+    formattedTimeString = formattedTimeString + seconds.toString();
     return formattedTimeString;
   }
   // public API
